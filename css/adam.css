@@ -1147,12 +1147,12 @@ textarea {
 .auth-divider span {
   white-space: nowrap;
 }
-.demo-note {
+/* .demo-note {
   text-align: center;
   color: #9aa39b;
   font-size: 10px;
   margin: 10px 0 0;
-}
+} */
 .auth-dots {
   display: flex;
   gap: 6px;
@@ -1356,5 +1356,58 @@ textarea {
   }
   .auth-footer {
     font-size: 9px;
+  }
+}
+
+/* ==========================================
+   PUBLIC DEMO AUTHENTICATION
+   ========================================== */
+
+.demo-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 130, 11, 0.14);
+  border-radius: 14px;
+  background: rgba(204, 229, 204, 0.28);
+  color: var(--text, #004206);
+  font-size: 0.85rem;
+}
+
+.demo-note i {
+  color: #00820b;
+}
+
+.demo-note code {
+  padding: 2px 6px;
+  border-radius: 5px;
+  background: rgba(0, 130, 11, 0.08);
+  color: #004206;
+  font-size: 0.8rem;
+}
+
+#authMessage {
+  border-radius: 12px;
+  font-size: 0.9rem;
+}
+
+#authMessage i {
+  font-size: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .demo-note {
+    margin-top: 12px;
+    padding: 10px 12px;
+    font-size: 0.75rem;
+  }
+
+  .demo-note code {
+    font-size: 0.72rem;
+  }
+
+  #authMessage {
+    margin-top: 10px !important;
+    padding: 9px 11px;
+    font-size: 0.78rem;
   }
 }
