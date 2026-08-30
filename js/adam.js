@@ -23,7 +23,6 @@ function showApp() {
 function logout() {
   localStorage.removeItem("adamAuthenticated");
   localStorage.removeItem("adamUser");
-  localStorage.removeItem("adamRememberMe");
 
   sessionStorage.removeItem("adamSession");
 
@@ -34,6 +33,29 @@ function logout() {
 
   if (loginForm) {
     loginForm.reset();
+  }
+
+  const emailInput = document.getElementById("email");
+  const passwordInput = document.getElementById("password");
+  const rememberInput = document.getElementById("remember");
+
+  /*
+   * Restore remembered credentials after logout.
+   */
+  const savedEmail = localStorage.getItem("adamRememberedEmail");
+  const savedPassword = localStorage.getItem("adamRememberedPassword");
+  const rememberMe = localStorage.getItem("adamRememberMe") === "true";
+
+  if (emailInput && savedEmail) {
+    emailInput.value = savedEmail;
+  }
+
+  if (passwordInput && savedPassword) {
+    passwordInput.value = savedPassword;
+  }
+
+  if (rememberInput) {
+    rememberInput.checked = rememberMe;
   }
 
   const authMessage = document.getElementById("authMessage");
@@ -74,32 +96,87 @@ const ADAM_PUBLIC_EMAIL = "demo@adam.app";
 const ADAM_PUBLIC_PASSWORD = "ADAM2026!";
 
 const loginForm = document.getElementById("loginForm");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const rememberInput = document.getElementById("remember");
+
+/* ==========================================
+   RESTORE REMEMBERED CREDENTIALS
+   ========================================== */
+
+if (emailInput) {
+  const savedEmail = localStorage.getItem("adamRememberedEmail");
+
+  if (savedEmail) {
+    emailInput.value = savedEmail;
+  }
+}
+
+if (passwordInput) {
+  const savedPassword = localStorage.getItem("adamRememberedPassword");
+
+  if (savedPassword) {
+    passwordInput.value = savedPassword;
+  }
+}
+
+if (rememberInput) {
+  const rememberMe = localStorage.getItem("adamRememberMe") === "true";
+
+  rememberInput.checked = rememberMe;
+}
+
+/* ==========================================
+   LOGIN
+   ========================================== */
 
 loginForm?.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const emailInput = document.getElementById("email");
-  const passwordInput = document.getElementById("password");
-  const rememberInput = document.getElementById("remember");
-
   const email = emailInput.value.trim().toLowerCase();
   const password = passwordInput.value;
 
-  // Clear previous authentication message
+  /* Remove previous authentication message */
+
   const existingMessage = document.getElementById("authMessage");
+
   if (existingMessage) {
     existingMessage.remove();
   }
 
-  /*
-   * PUBLIC DEVELOPMENT ACCOUNT
-   * This account intentionally lives in frontend code.
-   * Do NOT use this approach for production authentication.
-   */
+  /* ==========================================
+     PUBLIC DEVELOPMENT ACCOUNT
+     ========================================== */
+
   if (email === ADAM_PUBLIC_EMAIL && password === ADAM_PUBLIC_PASSWORD) {
+    /* ==========================================
+       REMEMBER CREDENTIALS
+       ========================================== */
+
+    if (rememberInput?.checked) {
+      localStorage.setItem("adamRememberedEmail", email);
+
+      localStorage.setItem("adamRememberedPassword", password);
+
+      localStorage.setItem("adamRememberMe", "true");
+    } else {
+      localStorage.removeItem("adamRememberedEmail");
+
+      localStorage.removeItem("adamRememberedPassword");
+
+      localStorage.removeItem("adamRememberMe");
+    }
+
+    /* ==========================================
+       AUTHENTICATION STATE
+       ========================================== */
+
     localStorage.setItem("adamAuthenticated", "true");
 
-    // Store demo user information
+    /* ==========================================
+       DEMO USER
+       ========================================== */
+
     localStorage.setItem(
       "adamUser",
       JSON.stringify({
@@ -110,37 +187,49 @@ loginForm?.addEventListener("submit", function (e) {
       }),
     );
 
-    // Remember login only when requested
-    if (rememberInput?.checked) {
-      localStorage.setItem("adamRememberMe", "true");
-    } else {
-      sessionStorage.setItem("adamSession", "true");
-    }
+    /* ==========================================
+       OPEN ADAM
+       ========================================== */
 
     showApp();
+
     return;
   }
 
-  // Invalid credentials
+  /* ==========================================
+     INVALID LOGIN
+     ========================================== */
+
   const message = document.createElement("div");
 
   message.id = "authMessage";
+
   message.className = "alert alert-danger mt-3 mb-0";
+
   message.setAttribute("role", "alert");
 
   message.innerHTML = `
     <div class="d-flex align-items-start gap-2">
       <i class="bi bi-exclamation-circle-fill"></i>
+
       <div>
         <strong>Unable to sign in.</strong>
+
         <div class="small mt-1">
-          Please check your email address and password.
+          Please check your email address
+          and password.
         </div>
       </div>
     </div>
   `;
 
-  loginForm.insertBefore(message, loginForm.querySelector(".auth-divider"));
+  const divider = loginForm.querySelector(".auth-divider");
+
+  if (divider) {
+    loginForm.insertBefore(message, divider);
+  } else {
+    loginForm.appendChild(message);
+  }
 });
 
 document.getElementById("logoutButton")?.addEventListener("click", logout);
