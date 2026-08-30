@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADAM | Adult Daily Activity Manager</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/adam.css" rel="stylesheet" />
+  </head>
+  <body>
+    <section id="authPage" class="auth-screen">
+      <div class="auth-brand">
+        <div class="brand-mark">A</div>
+        <span>ADAM</span>
+      </div>
+      <div class="auth-layout">
+        <div class="auth-copy">
+          <div class="auth-illustration" aria-hidden="true">
+            <div class="illustration-glow"></div>
+            <div class="illustration-card card-back"></div>
+            <div class="illustration-card card-mid"></div>
+            <div class="illustration-card card-front">
+              <div class="mini-top"><span></span><i></i><i></i></div>
+              <div class="mini-chart">
+                <span style="height: 35%"></span
+                ><span style="height: 55%"></span
+                ><span style="height: 45%"></span
+                ><span style="height: 78%"></span
+                ><span style="height: 64%"></span
+                ><span style="height: 90%"></span>
+              </div>
+              <div class="mini-row"><b></b><b></b><b></b></div>
+            </div>
+          </div>
+          <h1>Manage your<br /><span>AFH with confidence.</span></h1>
+          <p>
+            ADAM brings residents, staff, schedules, compliance and billing
+            together in one simple workspace.
+          </p>
+          <div class="auth-dots">
+            <span class="active"></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="auth-form-wrap">
+          <form id="loginForm" class="auth-form">
+            <div class="mb-4">
+              <span class="eyebrow green">WELCOME BACK</span>
+              <h2>Sign in to ADAM</h2>
+              <p class="text-muted mb-0">
+                Enter your details below to access your dashboard.
+              </p>
+            </div>
+            <label class="form-label">Email address</label>
+            <input
+              id="email"
+              type="email"
+              class="form-control form-control-lg mb-3"
+              placeholder="you@example.com"
+              autocomplete="email"
+              required
+            />
+            <div class="d-flex justify-content-between align-items-center">
+              <label class="form-label">Password</label
+              ><a href="#" class="small link-green">Forgot password?</a>
+            </div>
+            <div class="password-field mb-3">
+              <input
+                id="password"
+                type="password"
+                class="form-control form-control-lg"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+              /><button
+                type="button"
+                id="togglePassword"
+                aria-label="Show password"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
+            <div class="form-check mb-4">
+              <input
+                id="remember"
+                class="form-check-input"
+                type="checkbox"
+              /><label for="remember" class="form-check-label"
+                >Remember me</label
+              >
+            </div>
+            <button class="btn btn-adam btn-lg w-100">Sign In</button>
+            <div class="auth-divider">
+              <span>Secure access for your team</span>
+            </div>
+            <p class="demo-note">
+              Prototype mode · Any email and password will sign in.
+            </p>
+          </form>
+        </div>
+      </div>
+      <div class="auth-footer">
+        © 2026 ADAM · Adult Daily Activity Manager · Privacy · Terms
+      </div>
+    </section>
+
+    <section id="appPage" class="app-page">
+      <aside id="sidebar" class="sidebar">
+        <div class="sidebar-brand">
+          <div class="sidebar-logo">A</div>
+          <strong>ADAM</strong>
+        </div>
+        <nav class="sidebar-nav">
+          <div class="nav-section">Overview</div>
+          <a class="nav-link active" data-page="dashboard"
+            ><i class="bi bi-grid-1x2-fill"></i>Dashboard</a
+          >
+          <div class="nav-section">Management</div>
+          <a class="nav-link" data-page="residents"
+            ><i class="bi bi-people-fill"></i>Residents</a
+          >
+          <a class="nav-link" data-page="staff"
+            ><i class="bi bi-person-badge-fill"></i>Staff</a
+          >
+          <a class="nav-link" data-page="facilities"
+            ><i class="bi bi-building-fill"></i>Facilities</a
+          >
+          <a class="nav-link" data-page="schedule"
+            ><i class="bi bi-calendar3"></i>Schedule</a
+          >
+          <a class="nav-link" data-page="compliance"
+            ><i class="bi bi-shield-check"></i>Compliance</a
+          >
+          <div class="nav-section">Finance</div>
+          <a class="nav-link" data-page="billing"
+            ><i class="bi bi-credit-card-fill"></i>Billing</a
+          >
+          <a class="nav-link" data-page="expenses"
+            ><i class="bi bi-receipt"></i>Expenses</a
+          >
+          <div class="nav-section">Account</div>
+          <a class="nav-link" data-page="settings"
+            ><i class="bi bi-gear-fill"></i>Settings</a
+          >
+        </nav>
+        <div class="sidebar-footer">
+          <div class="user-mini">
+            <div class="avatar">KW</div>
+            <div class="flex-grow-1">
+              <strong class="small">Kody Wright</strong>
+              <div class="small opacity-50">Administrator</div>
+            </div>
+            <button id="logoutButton" class="btn text-white">
+              <i class="bi bi-box-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div id="sidebarBackdrop"></div>
+      <main class="main">
+        <header class="topbar">
+          <div class="d-flex align-items-center gap-3">
+            <button id="mobileMenu" class="btn btn-light d-lg-none">
+              <i class="bi bi-list"></i>
+            </button>
+            <div>
+              <strong id="topbarTitle">Dashboard</strong
+              ><small class="d-block text-muted d-none d-md-block"
+                >Adult Family Home Management</small
+              >
+            </div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <button class="btn btn-light rounded-circle">
+              <i class="bi bi-bell"></i>
+            </button>
+            <span class="avatar">KW</span>
+          </div>
+        </header>
+
+        <div id="dashboard" class="app-page-section active">
+          <div class="page-content">
+            <div class="mb-4">
+              <h1 class="page-title">Good afternoon, Kody.</h1>
+              <p class="text-muted">
+                Here's what's happening with your facility today.
+              </p>
+            </div>
+            <div class="row g-3 mb-4">
+              <div class="col-sm-6 col-xl-3">
+                <div class="dashboard-card">
+                  <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+                  <div class="stat-number">12</div>
+                  <div class="stat-label">Active Residents</div>
+                  <div class="trend">↑ 2 this month</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="dashboard-card">
+                  <div class="stat-icon">
+                    <i class="bi bi-person-badge-fill"></i>
+                  </div>
+                  <div class="stat-number">18</div>
+                  <div class="stat-label">Active Staff</div>
+                  <div class="trend">11 scheduled today</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="dashboard-card">
+                  <div class="stat-icon">
+                    <i class="bi bi-shield-check"></i>
+                  </div>
+                  <div class="stat-number">94%</div>
+                  <div class="stat-label">Compliance</div>
+                  <div class="trend">3 items need review</div>
+                </div>
+              </div>
+              <div class="col-sm-6 col-xl-3">
+                <div class="dashboard-card">
+                  <div class="stat-icon">
+                    <i class="bi bi-currency-dollar"></i>
+                  </div>
+                  <div class="stat-number">$18,420</div>
+                  <div class="stat-label">Monthly Revenue</div>
+                  <div class="trend">↑ 8.4%</div>
+                </div>
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-lg-8">
+                <div class="table-card">
+                  <div class="table-card-header">
+                    <div>
+                      <h5>Resident activity</h5>
+                      <small class="text-muted"
+                        >Latest care and documentation activity</small
+                      >
+                    </div>
+                    <button class="btn btn-adam btn-sm" data-page="residents">
+                      Residents
+                    </button>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Resident</th>
+                          <th>Activity</th>
+                          <th>Staff</th>
+                          <th>Time</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Margaret Johnson</strong></td>
+                          <td>Daily note completed</td>
+                          <td>Jessica Brown</td>
+                          <td>10:42 AM</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Robert Williams</strong></td>
+                          <td>Medication record updated</td>
+                          <td>Michael Davis</td>
+                          <td>10:15 AM</td>
+                        </tr>
+                        <tr>
+                          <td><strong>Sarah Anderson</strong></td>
+                          <td>Care plan review</td>
+                          <td>Amanda Wilson</td>
+                          <td>9:48 AM</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="dashboard-card">
+                  <h5>Today's alerts</h5>
+                  <div class="alert-row">
+                    <i class="bi bi-exclamation-circle"></i
+                    ><span>2 certifications expire within 30 days</span>
+                  </div>
+                  <div class="alert-row">
+                    <i class="bi bi-file-earmark-text"></i
+                    ><span>3 resident documents need review</span>
+                  </div>
+                  <div class="alert-row">
+                    <i class="bi bi-calendar-event"></i
+                    ><span>1 appointment tomorrow</span>
+                  </div>
+                  <button
+                    class="btn btn-light w-100 mt-3"
+                    data-page="compliance"
+                  >
+                    Open Compliance Center
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="residents" class="app-page-section">
+          <div class="page-content">
+            <div
+              class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4"
+            >
+              <div>
+                <h1 class="page-title">Residents</h1>
+                <p class="text-muted">
+                  Centralized resident records, care, documentation and
+                  activity.
+                </p>
+              </div>
+              <button
+                class="btn btn-adam"
+                data-bs-toggle="modal"
+                data-bs-target="#residentModal"
+              >
+                <i class="bi bi-person-plus me-1"></i>Add Resident
+              </button>
+            </div>
+            <div class="table-card mb-4">
+              <div class="table-card-header">
+                <div class="input-group search-box">
+                  <span class="input-group-text bg-white"
+                    ><i class="bi bi-search"></i></span
+                  ><input
+                    id="residentSearch"
+                    class="form-control"
+                    placeholder="Search residents..."
+                  />
+                </div>
+                <button class="btn btn-light">
+                  <i class="bi bi-filter me-1"></i>Filter
+                </button>
+              </div>
+              <div class="table-responsive">
+                <table class="table" id="residentTable">
+                  <thead>
+                    <tr>
+                      <th>Resident</th>
+                      <th>Room</th>
+                      <th>Care Level</th>
+                      <th>Placement</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr data-resident="Margaret Johnson" data-id="AD-1001">
+                      <td>
+                        <strong>Margaret Johnson</strong>
+                        <div class="small text-muted">ID #AD-1001</div>
+                      </td>
+                      <td>101</td>
+                      <td>Level 2</td>
+                      <td>Private Pay</td>
+                      <td>
+                        <span class="status-badge status-active">Active</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-light resident-open">
+                          Open
+                        </button>
+                      </td>
+                    </tr>
+                    <tr data-resident="Robert Williams" data-id="AD-1002">
+                      <td>
+                        <strong>Robert Williams</strong>
+                        <div class="small text-muted">ID #AD-1002</div>
+                      </td>
+                      <td>102</td>
+                      <td>Level 1</td>
+                      <td>Medicaid</td>
+                      <td>
+                        <span class="status-badge status-active">Active</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-light resident-open">
+                          Open
+                        </button>
+                      </td>
+                    </tr>
+                    <tr data-resident="Sarah Anderson" data-id="AD-1003">
+                      <td>
+                        <strong>Sarah Anderson</strong>
+                        <div class="small text-muted">ID #AD-1003</div>
+                      </td>
+                      <td>103</td>
+                      <td>Level 3</td>
+                      <td>Private Pay</td>
+                      <td>
+                        <span class="status-badge status-review">Review</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-light resident-open">
+                          Open
+                        </button>
+                      </td>
+                    </tr>
+                    <tr data-resident="James Thompson" data-id="AD-1004">
+                      <td>
+                        <strong>James Thompson</strong>
+                        <div class="small text-muted">ID #AD-1004</div>
+                      </td>
+                      <td>104</td>
+                      <td>Level 2</td>
+                      <td>Medicaid</td>
+                      <td>
+                        <span class="status-badge status-active">Active</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-light resident-open">
+                          Open
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="residentProfile" class="app-page-section">
+          <div class="page-content">
+            <button class="btn btn-light mb-3" data-page="residents">
+              <i class="bi bi-arrow-left me-1"></i>Back to Residents
+            </button>
+            <div class="profile-header mb-4">
+              <div class="d-flex align-items-center gap-3">
+                <div class="profile-avatar">MJ</div>
+                <div>
+                  <h2 id="profileName" class="mb-1">Margaret Johnson</h2>
+                  <div class="text-muted">Resident ID #AD-1001 · Room 101</div>
+                </div>
+              </div>
+              <span class="status-badge status-active">Active</span>
+            </div>
+
+            <div class="profile-tabs mb-4">
+              <button class="profile-tab active" data-tab="overview">
+                Overview
+              </button>
+              <button class="profile-tab" data-tab="care">Care Plan</button>
+              <button class="profile-tab" data-tab="medications">
+                Medications
+              </button>
+              <button class="profile-tab" data-tab="adl">ADLs</button>
+              <button class="profile-tab" data-tab="appointments">
+                Appointments
+              </button>
+              <button class="profile-tab" data-tab="incidents">
+                Incidents
+              </button>
+              <button class="profile-tab" data-tab="notes">Daily Notes</button>
+              <button class="profile-tab" data-tab="documents">
+                Documents
+              </button>
+              <button class="profile-tab" data-tab="billing">Billing</button>
+              <button class="profile-tab" data-tab="audit">Audit Trail</button>
+            </div>
+
+            <div id="profile-overview" class="profile-tab-content active">
+              <div class="row g-4">
+                <div class="col-lg-8">
+                  <div class="table-card p-4">
+                    <h5>Resident information</h5>
+                    <div class="row g-4 mt-1">
+                      <div class="col-md-6">
+                        <small class="text-muted">Date of Birth</small>
+                        <div class="fw-semibold">March 14, 1948</div>
+                      </div>
+                      <div class="col-md-6">
+                        <small class="text-muted">Admission Date</small>
+                        <div class="fw-semibold">January 12, 2026</div>
+                      </div>
+                      <div class="col-md-6">
+                        <small class="text-muted">Primary Contact</small>
+                        <div class="fw-semibold">Thomas Johnson</div>
+                        <small class="text-muted">(608) 555-0199</small>
+                      </div>
+                      <div class="col-md-6">
+                        <small class="text-muted">Care Level</small>
+                        <div class="fw-semibold">Level 2</div>
+                      </div>
+                      <div class="col-md-6">
+                        <small class="text-muted">Payer</small>
+                        <div class="fw-semibold">Private Pay</div>
+                      </div>
+                      <div class="col-md-6">
+                        <small class="text-muted">Physician</small>
+                        <div class="fw-semibold">Dr. Emily Carter</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="dashboard-card">
+                    <h5>Record completeness</h5>
+                    <div class="d-flex justify-content-between mt-4 mb-2">
+                      <span>Profile</span><strong>96%</strong>
+                    </div>
+                    <div class="progress mb-4">
+                      <div class="progress-bar" style="width: 96%"></div>
+                    </div>
+                    <div class="small text-muted">
+                      One emergency-contact document needs verification.
+                    </div>
+                    <button class="btn btn-adam w-100 mt-4">
+                      Review Record
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-care" class="profile-tab-content">
+              <div class="table-card p-4">
+                <div class="d-flex justify-content-between">
+                  <h5>Care Plan</h5>
+                  <button class="btn btn-adam btn-sm">Edit Care Plan</button>
+                </div>
+                <hr />
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <label class="form-label">Primary needs</label
+                    ><textarea class="form-control">
+Medication reminders, mobility assistance, meal support.</textarea
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Goals</label
+                    ><textarea class="form-control">
+Maintain independence with daily routines and community activities.</textarea
+                    >
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Mobility</label
+                    ><input
+                      class="form-control"
+                      value="Walker with standby assistance"
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Diet</label
+                    ><input class="form-control" value="Regular diet" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-medications" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Medication list</h5>
+                  <button class="btn btn-adam btn-sm">Add Medication</button>
+                </div>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Medication</th>
+                        <th>Dosage</th>
+                        <th>Schedule</th>
+                        <th>Route</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Lisinopril</td>
+                        <td>10 mg</td>
+                        <td>Daily · 8 AM</td>
+                        <td>Oral</td>
+                        <td>
+                          <span class="status-badge status-active">Active</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Vitamin D3</td>
+                        <td>1000 IU</td>
+                        <td>Daily · 8 AM</td>
+                        <td>Oral</td>
+                        <td>
+                          <span class="status-badge status-active">Active</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-adl" class="profile-tab-content">
+              <div class="table-card p-4">
+                <h5>Activities of Daily Living</h5>
+                <div class="row g-3 mt-2">
+                  <div class="col-md-6">
+                    <div class="adl-card">
+                      <strong>Bathing</strong><span>Standby assistance</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="adl-card">
+                      <strong>Dressing</strong><span>Minimal assistance</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="adl-card">
+                      <strong>Eating</strong><span>Independent</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="adl-card">
+                      <strong>Toileting</strong><span>Standby assistance</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-appointments" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Appointments</h5>
+                  <button class="btn btn-adam btn-sm">Add Appointment</button>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Provider</th>
+                      <th>Purpose</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Sep 2, 2026 · 9:30 AM</td>
+                      <td>Dr. Emily Carter</td>
+                      <td>Routine follow-up</td>
+                      <td>
+                        <span class="status-badge status-pending"
+                          >Upcoming</span
+                        >
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="profile-incidents" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Incident reports</h5>
+                  <button class="btn btn-adam btn-sm">New Incident</button>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Date</th>
+                      <th>Type</th>
+                      <th>Severity</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Jul 18, 2026</td>
+                      <td>Fall — no injury</td>
+                      <td>Low</td>
+                      <td>
+                        <span class="status-badge status-active">Closed</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="profile-notes" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Daily notes</h5>
+                  <button class="btn btn-adam btn-sm">Add Note</button>
+                </div>
+                <div class="p-4">
+                  <div class="note-entry">
+                    <strong>Aug 29 · Jessica Brown</strong>
+                    <p class="mb-0 mt-1">
+                      Resident participated in breakfast and morning activity.
+                      No concerns reported.
+                    </p>
+                  </div>
+                  <div class="note-entry">
+                    <strong>Aug 28 · Michael Davis</strong>
+                    <p class="mb-0 mt-1">
+                      Medication administered as scheduled. Resident resting
+                      comfortably.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="profile-documents" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Documents</h5>
+                  <button class="btn btn-adam btn-sm">Upload Document</button>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Document</th>
+                      <th>Category</th>
+                      <th>Updated</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Care Plan.pdf</td>
+                      <td>Care</td>
+                      <td>Aug 10, 2026</td>
+                      <td>
+                        <span class="status-badge status-active">Verified</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Emergency Contact.pdf</td>
+                      <td>Legal</td>
+                      <td>Aug 2, 2026</td>
+                      <td>
+                        <span class="status-badge status-review">Review</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="profile-billing" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Resident billing</h5>
+                  <button class="btn btn-adam btn-sm">Create Invoice</button>
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Invoice</th>
+                      <th>Period</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>#INV-2026-0821</td>
+                      <td>September 2026</td>
+                      <td>$4,250.00</td>
+                      <td>
+                        <span class="status-badge status-pending">Pending</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="profile-audit" class="profile-tab-content">
+              <div class="table-card">
+                <div class="table-card-header">
+                  <h5>Audit trail</h5>
+                  <small class="text-muted"
+                    >Immutable activity history in production</small
+                  >
+                </div>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Date/Time</th>
+                      <th>User</th>
+                      <th>Action</th>
+                      <th>Module</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Aug 29 · 10:42 AM</td>
+                      <td>Jessica Brown</td>
+                      <td>Created daily note</td>
+                      <td>Daily Notes</td>
+                    </tr>
+                    <tr>
+                      <td>Aug 29 · 8:03 AM</td>
+                      <td>Kody Wright</td>
+                      <td>Viewed resident record</td>
+                      <td>Residents</td>
+                    </tr>
+                    <tr>
+                      <td>Aug 28 · 4:18 PM</td>
+                      <td>Michael Davis</td>
+                      <td>Recorded medication administration</td>
+                      <td>Medications</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="staff" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Staff</h1>
+            <p class="text-muted">
+              Employees, roles, certifications and scheduling.
+            </p>
+            <div class="table-card mt-4">
+              <div class="table-card-header">
+                <h5>Employees</h5>
+                <button class="btn btn-adam">Add Staff</button>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Employee</th>
+                    <th>Role</th>
+                    <th>Shift</th>
+                    <th>Certification</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Jessica Brown</td>
+                    <td>Caregiver</td>
+                    <td>7 AM–3 PM</td>
+                    <td>Current</td>
+                    <td>
+                      <span class="status-badge status-active">Active</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Michael Davis</td>
+                    <td>Caregiver</td>
+                    <td>3 PM–11 PM</td>
+                    <td>Current</td>
+                    <td>
+                      <span class="status-badge status-active">Active</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Amanda Wilson</td>
+                    <td>Administrator</td>
+                    <td>8 AM–4 PM</td>
+                    <td>Expires Soon</td>
+                    <td>
+                      <span class="status-badge status-active">Active</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="facilities" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Facilities</h1>
+            <p class="text-muted">
+              Manage locations, licenses, capacity and occupancy.
+            </p>
+            <div class="row g-4 mt-1">
+              <div class="col-lg-8">
+                <div class="facility-banner">
+                  <small>PRIMARY FACILITY</small>
+                  <h2>Evergreen Adult Family Home</h2>
+                  <p>1234 Evergreen Drive · Madison, WI 53713</p>
+                  <div class="row mt-4">
+                    <div class="col-6">
+                      <small>Capacity</small>
+                      <h4>16</h4>
+                    </div>
+                    <div class="col-6">
+                      <small>Occupancy</small>
+                      <h4>12</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="dashboard-card">
+                  <h5>Occupancy</h5>
+                  <div class="d-flex justify-content-between mt-4 mb-2">
+                    <span>12 of 16 beds</span><strong>75%</strong>
+                  </div>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 75%"></div>
+                  </div>
+                  <p class="small text-muted mt-3">
+                    4 beds currently available.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="schedule" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Schedule</h1>
+            <p class="text-muted">
+              Staff shifts, resident appointments and daily tasks.
+            </p>
+            <div class="table-card mt-4">
+              <div class="table-card-header">
+                <h5>Today's schedule</h5>
+                <button class="btn btn-adam">Add Shift</button>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Staff</th>
+                    <th>Assignment</th>
+                    <th>Facility</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>7:00 AM–3:00 PM</td>
+                    <td>Jessica Brown</td>
+                    <td>Caregiver</td>
+                    <td>Evergreen AFH</td>
+                    <td>
+                      <span class="status-badge status-active">Scheduled</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>3:00 PM–11:00 PM</td>
+                    <td>Michael Davis</td>
+                    <td>Caregiver</td>
+                    <td>Evergreen AFH</td>
+                    <td>
+                      <span class="status-badge status-active">Scheduled</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="compliance" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Compliance Center</h1>
+            <p class="text-muted">
+              Track licenses, certifications, inspections and required
+              documentation.
+            </p>
+            <div class="row g-3 mt-1">
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Overall</div>
+                  <div class="stat-number">94%</div>
+                  <div class="progress">
+                    <div class="progress-bar" style="width: 94%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Expiring Soon</div>
+                  <div class="stat-number">3</div>
+                  <div class="trend">Needs attention</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Overdue</div>
+                  <div class="stat-number">0</div>
+                  <div class="trend">All clear</div>
+                </div>
+              </div>
+            </div>
+            <div class="table-card mt-4">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Requirement</th>
+                    <th>Owner</th>
+                    <th>Due</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Staff certification renewal</td>
+                    <td>Amanda Wilson</td>
+                    <td>Sep 18, 2026</td>
+                    <td>
+                      <span class="status-badge status-review">Expiring</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Facility inspection</td>
+                    <td>Administrator</td>
+                    <td>Oct 02, 2026</td>
+                    <td>
+                      <span class="status-badge status-active">Scheduled</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="billing" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Billing</h1>
+            <p class="text-muted">Invoices, payments and revenue.</p>
+            <div class="row g-3 mt-1">
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Outstanding</div>
+                  <div class="stat-number">$7,820</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Paid This Month</div>
+                  <div class="stat-number">$18,420</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="dashboard-card">
+                  <div class="stat-label">Expenses</div>
+                  <div class="stat-number">$6,230</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="expenses" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Expenses</h1>
+            <p class="text-muted">Track operating expenses and receipts.</p>
+            <div class="table-card mt-4">
+              <div class="table-card-header">
+                <h5>Recent expenses</h5>
+                <button class="btn btn-adam">Add Expense</button>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Vendor</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Aug 28</td>
+                    <td>Sysco</td>
+                    <td>Food</td>
+                    <td>$842.18</td>
+                    <td>Attached</td>
+                  </tr>
+                  <tr>
+                    <td>Aug 27</td>
+                    <td>Madison Utilities</td>
+                    <td>Utilities</td>
+                    <td>$318.40</td>
+                    <td>Attached</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div id="settings" class="app-page-section">
+          <div class="page-content">
+            <h1 class="page-title">Settings</h1>
+            <p class="text-muted">
+              Manage your ADAM account and application preferences.
+            </p>
+            <div class="row g-4 mt-1">
+              <div class="col-lg-3">
+                <div class="list-group">
+                  <button class="list-group-item active">Account</button
+                  ><button class="list-group-item">Notifications</button
+                  ><button class="list-group-item">Security</button
+                  ><button class="list-group-item">Billing</button>
+                </div>
+              </div>
+              <div class="col-lg-9">
+                <div class="table-card p-4">
+                  <h5>Account information</h5>
+                  <hr />
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label class="form-label">First Name</label
+                      ><input class="form-control" value="Kody" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Last Name</label
+                      ><input class="form-control" value="Wright" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Email</label
+                      ><input class="form-control" value="owner@example.com" />
+                    </div>
+                    <div class="col-md-6">
+                      <label class="form-label">Phone</label
+                      ><input class="form-control" value="(608) 555-0123" />
+                    </div>
+                  </div>
+                  <button class="btn btn-adam mt-4">Save Changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <div class="modal fade" id="residentModal" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Resident</h5>
+            <button class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <form id="addResidentForm">
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">First Name</label
+                  ><input id="newFirst" class="form-control" required />
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last Name</label
+                  ><input id="newLast" class="form-control" required />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Room</label
+                  ><input id="newRoom" class="form-control" required />
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Care Level</label
+                  ><select id="newCare" class="form-select">
+                    <option>Level 1</option>
+                    <option>Level 2</option>
+                    <option>Level 3</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label">Payer</label
+                  ><select id="newPayer" class="form-select">
+                    <option>Private Pay</option>
+                    <option>Medicaid</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label">Primary Contact</label
+                  ><input
+                    id="newContact"
+                    class="form-control"
+                    placeholder="Name and phone"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                Cancel</button
+              ><button class="btn btn-adam">Create Resident</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/adam.js"></script>
+  </body>
+</html>
